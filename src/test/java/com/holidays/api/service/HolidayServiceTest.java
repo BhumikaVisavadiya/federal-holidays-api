@@ -51,14 +51,14 @@ class HolidayServiceTest {
         sampleHoliday = FederalHoliday.builder()
                 .id(1L)
                 .name("Canada Day")
-                .date(LocalDate.of(2024, 7, 1))
+                .date(LocalDate.of(2026, 7, 1))
                 .country(Country.CANADA)
                 .description("National holiday")
                 .build();
 
         sampleRequest = HolidayRequest.builder()
                 .name("Canada Day")
-                .date(LocalDate.of(2024, 7, 1))
+                .date(LocalDate.of(2026, 7, 1))
                 .country(Country.CANADA)
                 .description("National holiday")
                 .build();
@@ -66,7 +66,7 @@ class HolidayServiceTest {
         sampleResponse = HolidayResponse.builder()
                 .id(1L)
                 .name("Canada Day")
-                .date(LocalDate.of(2024, 7, 1))
+                .date(LocalDate.of(2026, 7, 1))
                 .country(Country.CANADA)
                 .description("National holiday")
                 .build();
@@ -96,13 +96,13 @@ class HolidayServiceTest {
 
     @Test
     void getHolidaysByCountryAndYear_returnsFilteredHolidays() {
-        LocalDate from = LocalDate.of(2024, 1, 1);
-        LocalDate to = LocalDate.of(2024, 12, 31);
+        LocalDate from = LocalDate.of(2026, 1, 1);
+        LocalDate to = LocalDate.of(2026, 12, 31);
         when(holidayRepository.findByCountryAndDateBetween(Country.CANADA, from, to))
                 .thenReturn(List.of(sampleHoliday));
         when(holidayMapper.toResponse(sampleHoliday)).thenReturn(sampleResponse);
 
-        List<HolidayResponse> result = holidayService.getHolidaysByCountryAndYear(Country.CANADA, 2024);
+        List<HolidayResponse> result = holidayService.getHolidaysByCountryAndYear(Country.CANADA, 2026);
 
         assertThat(result).hasSize(1);
     }
@@ -175,13 +175,13 @@ class HolidayServiceTest {
         FederalHoliday existing = FederalHoliday.builder()
                 .id(1L)
                 .name("Old Holiday")
-                .date(LocalDate.of(2024, 1, 1))
+                .date(LocalDate.of(2026, 1, 1))
                 .country(Country.CANADA)
                 .build();
 
         HolidayRequest updatedRequest = HolidayRequest.builder()
                 .name("Canada Day")
-                .date(LocalDate.of(2024, 7, 1))
+                .date(LocalDate.of(2026, 7, 1))
                 .country(Country.CANADA)
                 .build();
 
@@ -196,7 +196,7 @@ class HolidayServiceTest {
     @Test
     void uploadHolidays_processesValidCsvFile() throws IOException {
         MockMultipartFile file = new MockMultipartFile(
-                "file", "holidays.csv", "text/csv", "name,date,country,description\nCanada Day,2024-07-01,CANADA,".getBytes()
+                "file", "holidays.csv", "text/csv", "name,date,country,description\nCanada Day,2026-07-01,CANADA,".getBytes()
         );
 
         CsvParser.ParseResult parseResult = new CsvParser.ParseResult(List.of(sampleRequest), List.of());

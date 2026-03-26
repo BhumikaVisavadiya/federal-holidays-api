@@ -25,7 +25,7 @@ public class HolidayRequest {
 
     @NotNull(message = "Holiday date is required")
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Schema(description = "Date of the holiday (yyyy-MM-dd)", example = "2024-07-01")
+    @Schema(description = "Date of the holiday (yyyy-MM-dd)", example = "2026-07-01")
     private LocalDate date;
 
     @NotNull(message = "Country is required")

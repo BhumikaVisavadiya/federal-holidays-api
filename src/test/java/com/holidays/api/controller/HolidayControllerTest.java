@@ -46,14 +46,14 @@ class HolidayControllerTest {
         sampleResponse = HolidayResponse.builder()
                 .id(1L)
                 .name("Canada Day")
-                .date(LocalDate.of(2024, 7, 1))
+                .date(LocalDate.of(2026, 7, 1))
                 .country(Country.CANADA)
                 .description("National holiday")
                 .build();
 
         sampleRequest = HolidayRequest.builder()
                 .name("Canada Day")
-                .date(LocalDate.of(2024, 7, 1))
+                .date(LocalDate.of(2026, 7, 1))
                 .country(Country.CANADA)
                 .description("National holiday")
                 .build();
@@ -80,12 +80,12 @@ class HolidayControllerTest {
 
     @Test
     void listHolidays_withCountryAndYearFilter_returnsFilteredHolidays() throws Exception {
-        when(holidayService.getHolidaysByCountryAndYear(Country.CANADA, 2024))
+        when(holidayService.getHolidaysByCountryAndYear(Country.CANADA, 2026))
                 .thenReturn(List.of(sampleResponse));
 
         mockMvc.perform(get("/api/v1/holidays")
                         .param("country", "CANADA")
-                        .param("year", "2024"))
+                        .param("year", "2026"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name").value("Canada Day"));
     }
@@ -124,7 +124,7 @@ class HolidayControllerTest {
     @Test
     void createHoliday_returns400_withMissingName() throws Exception {
         HolidayRequest invalidRequest = HolidayRequest.builder()
-                .date(LocalDate.of(2024, 7, 1))
+                .date(LocalDate.of(2026, 7, 1))
                 .country(Country.CANADA)
                 .build();
 
@@ -152,7 +152,7 @@ class HolidayControllerTest {
     @Test
     void createHoliday_returns409_whenDuplicate() throws Exception {
         when(holidayService.createHoliday(any()))
-                .thenThrow(new DuplicateHolidayException(LocalDate.of(2024, 7, 1), "CANADA"));
+                .thenThrow(new DuplicateHolidayException(LocalDate.of(2026, 7, 1), "CANADA"));
 
         mockMvc.perform(post("/api/v1/holidays")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -195,7 +195,7 @@ class HolidayControllerTest {
 
         MockMultipartFile file = new MockMultipartFile(
                 "file", "holidays.csv", "text/csv",
-                "name,date,country,description\nCanada Day,2024-07-01,CANADA,".getBytes()
+                "name,date,country,description\nCanada Day,2026-07-01,CANADA,".getBytes()
         );
 
         mockMvc.perform(multipart("/api/v1/holidays/upload").file(file))

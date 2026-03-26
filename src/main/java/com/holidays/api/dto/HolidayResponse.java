@@ -24,7 +24,7 @@ public class HolidayResponse {
     private String name;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Schema(description = "Date of the holiday", example = "2024-07-01")
+    @Schema(description = "Date of the holiday", example = "2026-07-01")
     private LocalDate date;
 
     @Schema(description = "Country for the holiday", example = "CANADA")

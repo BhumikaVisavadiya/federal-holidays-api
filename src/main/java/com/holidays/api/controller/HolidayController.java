@@ -37,7 +37,7 @@ public class HolidayController {
     public ResponseEntity<List<HolidayResponse>> listHolidays(
             @Parameter(description = "Filter by country (CANADA or USA)")
             @RequestParam(required = false) Country country,
-            @Parameter(description = "Filter by year (e.g. 2024)")
+            @Parameter(description = "Filter by year (e.g. 2026)")
             @RequestParam(required = false) Integer year) {
 
         List<HolidayResponse> holidays;

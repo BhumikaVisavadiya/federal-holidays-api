@@ -122,7 +122,7 @@ Adding a new country requires only:
 ```json
 {
   "name": "Canada Day",
-  "date": "2024-07-01",
+  "date": "2026-07-01",
   "country": "CANADA",
   "description": "Celebrates the anniversary of Canadian Confederation"
 }
@@ -134,7 +134,7 @@ Adding a new country requires only:
 {
   "id": 1,
   "name": "Canada Day",
-  "date": "2024-07-01",
+  "date": "2026-07-01",
   "country": "CANADA",
   "description": "Celebrates the anniversary of Canadian Confederation"
 }
@@ -150,8 +150,8 @@ CSV format (headers required):
 
 ```csv
 name,date,country,description
-Canada Day,2024-07-01,CANADA,National holiday
-Independence Day,2024-07-04,USA,USA independence day
+Canada Day,2026-07-01,CANADA,National holiday
+Independence Day,2026-07-04,USA,USA independence day
 ```
 
 **Response 200:**
