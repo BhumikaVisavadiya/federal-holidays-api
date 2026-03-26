@@ -42,12 +42,12 @@
       "request": {
         "method": "GET",
         "url": {
-          "raw": "{{baseUrl}}/api/v1/holidays?country=USA&year=2024",
+          "raw": "{{baseUrl}}/api/v1/holidays?country=USA&year=2026",
           "host": ["{{baseUrl}}"],
           "path": ["api", "v1", "holidays"],
           "query": [
             { "key": "country", "value": "USA" },
-            { "key": "year", "value": "2024" }
+            { "key": "year", "value": "2026" }
           ]
         },
         "description": "Returns holidays filtered by country and year"
@@ -77,7 +77,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Canada Day\",\n  \"date\": \"2024-07-01\",\n  \"country\": \"CANADA\",\n  \"description\": \"Celebrates the anniversary of Canadian Confederation\"\n}"
+          "raw": "{\n  \"name\": \"Canada Day\",\n  \"date\": \"2026-07-01\",\n  \"country\": \"CANADA\",\n  \"description\": \"Celebrates the anniversary of Canadian Confederation\"\n}"
         },
         "description": "Creates a new federal holiday for Canada"
       }
@@ -94,7 +94,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Independence Day\",\n  \"date\": \"2024-07-04\",\n  \"country\": \"USA\",\n  \"description\": \"Celebrates the adoption of the Declaration of Independence\"\n}"
+          "raw": "{\n  \"name\": \"Independence Day\",\n  \"date\": \"2026-07-04\",\n  \"country\": \"USA\",\n  \"description\": \"Celebrates the adoption of the Declaration of Independence\"\n}"
         },
         "description": "Creates a new federal holiday for USA"
       }
@@ -111,7 +111,7 @@
         },
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"name\": \"Canada Day (Updated)\",\n  \"date\": \"2024-07-01\",\n  \"country\": \"CANADA\",\n  \"description\": \"Updated description for Canada Day\"\n}"
+          "raw": "{\n  \"name\": \"Canada Day (Updated)\",\n  \"date\": \"2026-07-01\",\n  \"country\": \"CANADA\",\n  \"description\": \"Updated description for Canada Day\"\n}"
         },
         "description": "Updates an existing holiday by ID"
       }
