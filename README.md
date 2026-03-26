@@ -55,7 +55,7 @@ docker compose down -v
 ## Running Tests
 
 ```bash
-./mvnw test
+mvn test
 ```
 
 JaCoCo coverage report is generated at:
@@ -67,7 +67,7 @@ target/site/jacoco/index.html
 To enforce the 70% coverage gate:
 
 ```bash
-./mvnw verify
+mvn verify
 ```
 
 ---
