@@ -1,0 +1,172 @@
+{
+  "info": {
+    "name": "Federal Holidays API",
+    "description": "Postman collection for the Federal Holidays RESTful API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "List All Holidays",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays"]
+        },
+        "description": "Returns all federal holidays across all countries"
+      }
+    },
+    {
+      "name": "List Holidays by Country",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays?country=CANADA",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays"],
+          "query": [{ "key": "country", "value": "CANADA" }]
+        },
+        "description": "Returns holidays filtered by country (CANADA or USA)"
+      }
+    },
+    {
+      "name": "List Holidays by Country and Year",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays?country=USA&year=2024",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays"],
+          "query": [
+            { "key": "country", "value": "USA" },
+            { "key": "year", "value": "2024" }
+          ]
+        },
+        "description": "Returns holidays filtered by country and year"
+      }
+    },
+    {
+      "name": "Get Holiday by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays", "1"]
+        },
+        "description": "Returns a specific holiday by its ID"
+      }
+    },
+    {
+      "name": "Create Holiday (Canada Day)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Canada Day\",\n  \"date\": \"2024-07-01\",\n  \"country\": \"CANADA\",\n  \"description\": \"Celebrates the anniversary of Canadian Confederation\"\n}"
+        },
+        "description": "Creates a new federal holiday for Canada"
+      }
+    },
+    {
+      "name": "Create Holiday (Independence Day)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Independence Day\",\n  \"date\": \"2024-07-04\",\n  \"country\": \"USA\",\n  \"description\": \"Celebrates the adoption of the Declaration of Independence\"\n}"
+        },
+        "description": "Creates a new federal holiday for USA"
+      }
+    },
+    {
+      "name": "Update Holiday",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays", "1"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Canada Day (Updated)\",\n  \"date\": \"2024-07-01\",\n  \"country\": \"CANADA\",\n  \"description\": \"Updated description for Canada Day\"\n}"
+        },
+        "description": "Updates an existing holiday by ID"
+      }
+    },
+    {
+      "name": "Upload Holidays CSV",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays/upload",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays", "upload"]
+        },
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "sample-holidays.csv",
+              "description": "CSV file with columns: name, date, country, description"
+            }
+          ]
+        },
+        "description": "Uploads a CSV file containing holiday data. CSV must have headers: name, date (yyyy-MM-dd), country (CANADA or USA), description"
+      }
+    },
+    {
+      "name": "Create Holiday - Validation Error",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"date\": null,\n  \"country\": null\n}"
+        },
+        "description": "Demonstrates validation error response (400)"
+      }
+    },
+    {
+      "name": "Get Holiday - Not Found",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/holidays/9999",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "v1", "holidays", "9999"]
+        },
+        "description": "Demonstrates 404 not found response"
+      }
+    }
+  ]
+}
